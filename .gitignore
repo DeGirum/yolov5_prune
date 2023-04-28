@@ -255,3 +255,4 @@ com_crashlytics_export_strings.xml
 crashlytics.properties
 crashlytics-build.properties
 fabric.properties
+!DG_Prune/lth_coco_yolov5s_1p1.json
