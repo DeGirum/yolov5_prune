@@ -460,6 +460,7 @@ def train(hyp, opt, device, callbacks):  # hyp is path/to/hyp.yaml or hyp dictio
                             'model': de_parallel(model).state_dict(),
                             'ema': ema.ema.state_dict(),
                             'scheduler': scheduler.state_dict(),
+                            'last_opt_step': last_opt_step,
                             'updates': ema.updates,
                             'optimizer': optimizer.state_dict(),
                             'opt': vars(opt),
@@ -523,7 +524,7 @@ def parse_opt(known=False):
     parser = argparse.ArgumentParser()
     parser.add_argument('--weights', type=str, default=ROOT / 'yolov5s.pt', help='initial weights path')
     parser.add_argument('--cfg', type=str, default='', help='model.yaml path')
-    parser.add_argument('--prune-json', type=str, default='lth_yolov5m.json', help='prune.json path')
+    parser.add_argument('--prune-json', type=str, default='lth_coco_yolov5s_1p1.json', help='prune.json path')
     parser.add_argument('--data', type=str, default=ROOT / 'data/coco128.yaml', help='dataset.yaml path')
     parser.add_argument('--hyp', type=str, default=ROOT / 'data/hyps/hyp.scratch-low.yaml', help='hyperparameters path')
     parser.add_argument('--epochs', type=int, default=300, help='total training epochs')
